@@ -3,7 +3,7 @@
 namespace OkayBueno\Images\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
-use OkayBueno\Images\Events\ImageWasMovedToCloud;
+use OkayBueno\Images\Events\ImageEvent;
 use OkayBueno\Images\Listeners\Traits\RemovesImageFromDatabase;
 use OkayBueno\Images\Listeners\Traits\RemovesLocalImage;
 
@@ -17,9 +17,9 @@ class RemoveLocalImageAsync implements ShouldQueue
     use RemovesImageFromDatabase;
 
     /**
-     * @param ImageWasMovedToCloud $event
+     * @param ImageEvent $event
      */
-    public function handle( ImageWasMovedToCloud $event )
+    public function handle( ImageEvent $event )
     {
         $this->removeLocalImage( $event->image );
 

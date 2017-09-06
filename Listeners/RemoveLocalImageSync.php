@@ -2,7 +2,7 @@
 
 namespace OkayBueno\Images\Listeners;
 
-use OkayBueno\Images\Events\ImageWasMovedToCloud;
+use OkayBueno\Images\Events\ImageEvent;
 use OkayBueno\Images\Listeners\Traits\RemovesImageFromDatabase;
 use OkayBueno\Images\Listeners\Traits\RemovesLocalImage;
 
@@ -16,9 +16,9 @@ class RemoveLocalImageSync
     use RemovesImageFromDatabase;
 
     /**
-     * @param ImageWasMovedToCloud $event
+     * @param ImageEvent $event
      */
-    public function handle( ImageWasMovedToCloud $event )
+    public function handle( ImageEvent $event )
     {
         $this->removeLocalImage( $event->image );
 

@@ -6,7 +6,7 @@ namespace OkayBueno\Images\Events;
  * Class Event
  * @package OkayBueno\Images\Events
  */
-abstract class Event
+abstract class ImageEvent
 {
 
     /**

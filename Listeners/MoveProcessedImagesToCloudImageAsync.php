@@ -3,7 +3,7 @@
 namespace OkayBueno\Images\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
-use OkayBueno\Images\Events\ImageWasProcessed;
+use OkayBueno\Images\Events\ImageEvent;
 use OkayBueno\Images\Listeners\Traits\MovesProcessedImageToCloud;
 
 /**
@@ -15,9 +15,9 @@ class MoveProcessedImagesToCloudImageAsync implements ShouldQueue
     use MovesProcessedImageToCloud;
 
     /**
-     * @param ImageWasProcessed $event
+     * @param ImageEvent $event
      */
-    public function handle( ImageWasProcessed $event )
+    public function handle( ImageEvent $event )
     {
         $this->moveProcessedImageToCloud( $event->image );
     }

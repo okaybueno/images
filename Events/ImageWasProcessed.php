@@ -9,7 +9,7 @@ use OkayBueno\Images\Models\Image;
  * Class ImageWasProcessed
  * @package OkayBueno\Images\Events
  */
-class ImageWasProcessed extends Event
+class ImageWasProcessed extends ImageEvent
 {
     use SerializesModels;
 
