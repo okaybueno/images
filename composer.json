@@ -1,0 +1,36 @@
+{
+    "name": "okaybueno/images",
+    "description": "Laravel package that simplifies the way you work with images associated to models.",
+    "keywords": ["php", "laravel", "image"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jesús Espejo",
+            "email": "jesus@okaybueno.com",
+            "homepage": "http://www.okaybueno.com",
+            "role": "Tech Strategy Partner"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/config": "5.*",
+        "illuminate/database": "5.*",
+        "illuminate/console": "5.*",
+        "illuminate/queue": "5.*",
+        "illuminate/http": "5.*",
+        "illuminate/filesystem": "5.*",
+        "intervention/image": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "OkayBueno\\Images\\": ""
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OkayBueno\\Images\\ImageServiceProvider"
+            ]
+        }
+    }
+}
