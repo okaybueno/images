@@ -24,7 +24,7 @@ both synchronously and asynchronously, reducing the amount of work that we have 
 
 ## Installation
 
-1. Install this package by adding it to your `composer.json` or by running `composer require followloop/images` in your project's folder.
+1. Install this package by adding it to your `composer.json` or by running `composer require okaybueno/images` in your project's folder.
 2. For Laravel 5.5 the Service provider is automatically registered, but if you're using Laravel 5.4, then you must add the 
 provider to your `config/app.php` file: `OkayBueno\Images\ImageServiceProvider::class`
 3. Publish the configuration file by running `php artisan vendor:publish --provider="OkayBueno\Images\ImageServiceProvider::class"`
