@@ -18,8 +18,7 @@ use OkayBueno\Images\Services\Validation\src\ImageValidatorLaravel;
 class ImageServiceProvider extends ServiceProvider
 {
 
-    private $configFileName = 'images.php';
-    private $configPath = '/config/';
+    private $configPath = '/config/images.php';
 
 
     /**
@@ -28,7 +27,7 @@ class ImageServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.$this->configPath.$this->configFileName => config_path( $this->configFileName),
+            __DIR__.$this->configPath => config_path('images.php'),
         ], 'images');
 
         $this->loadMigrationsFrom( __DIR__.'/migrations' );
@@ -42,7 +41,7 @@ class ImageServiceProvider extends ServiceProvider
     {
         // merge default config
         $this->mergeConfigFrom(
-            __DIR__.$this->configPath.$this->configFileName , 'images'
+            __DIR__.$this->configPath , 'images'
         );
 
         // Bindings.
