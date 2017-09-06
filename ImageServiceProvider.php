@@ -42,7 +42,7 @@ class ImageServiceProvider extends ServiceProvider
     {
         // merge default config
         $this->mergeConfigFrom(
-            __DIR__.$this->configPath , 'images'
+            __DIR__.$this->configPath.$this->configFileName , 'images'
         );
 
         // Bindings.
