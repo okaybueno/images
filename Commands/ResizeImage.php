@@ -109,21 +109,18 @@ class ResizeImage extends Command
             if ( $existingSizeKey === FALSE )
             {
                 // Remove the existing size.
-                $this->removeImageSize( $thumb, $image->cloud );
+                $this->removeImageSize( $thumb, TRUE );
             }
         }
 
         // If the image does not exist locally, copy it over.
-        if ( $image->cloud )
+        $folderName = dirname( $image->path );
+        if ( !$this->localDisk->exists( $image->path ) && $this->cloudDisk  )
         {
-            if ( !$this->localDisk->exists( $image->path ) )
-            {
-                $folderName = dirname( $image->path );
-                if ( !$this->localDisk->exists( $folderName ) ) $this->localDisk->makeDirectory( $folderName, 0775);
+            if ( !$this->localDisk->exists( $folderName ) ) $this->localDisk->makeDirectory( $folderName, 0775);
 
-                $fileContents = $this->cloudDisk->get( $image->path );
-                $this->localDisk->put( $image->path, $fileContents );
-            }
+            $fileContents = $this->cloudDisk->get( $image->path );
+            $this->localDisk->put( $image->path, $fileContents );
         }
 
         $finalThumbs = [];
@@ -131,7 +128,7 @@ class ResizeImage extends Command
         foreach( $newSizes as $sizeKey => $size )
         {
             // At this point, old images are removed, so we can convert to new sizes.
-            $newThumbs = $this->imageProcessingService->resizeOrCropImageToSizes( $image->path, dirname( $image->path ), [ $size ] );
+            $newThumbs = $this->imageProcessingService->resizeOrCropImageToSizes( $image->path, $folderName, [ $size ] );
 
             if ( $newThumbs && !empty( $newThumbs ) )
             {
@@ -140,7 +137,7 @@ class ResizeImage extends Command
             }
 
             // Move thumbs to the cloud disk.
-            if ( $image->cloud )
+            if ( $this->cloudDisk )
             {
                 $this->moveThumbsToRemoteDisk( $newThumbs, $image->filename );
             }
@@ -223,6 +220,8 @@ class ResizeImage extends Command
                 // Remove from local.
                 if ( $this->localDisk->exists( $thumb ) ) $this->localDisk->delete( $thumb );
             }
+
+            $this->removeImageSize( $thumb, FALSE );
         }
     }
 

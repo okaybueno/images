@@ -40,8 +40,6 @@ class Image extends Model
                 }
             }
 
-            return empty( $sizesArray ) ? NULL : $sizesArray;
-
         } else
         {
             if ( is_array( $this->thumbnails) )
@@ -53,7 +51,7 @@ class Image extends Model
             }
         }
 
-        return NULL;
+        return $sizesArray;
     }
 
     /**

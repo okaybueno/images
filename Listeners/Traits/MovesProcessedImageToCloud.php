@@ -45,7 +45,6 @@ trait MovesProcessedImageToCloud
                 }
             }
 
-            $image->cloud = TRUE;
             $image->save();
 
             event( new ImageWasMovedToCloud( $image ) );
