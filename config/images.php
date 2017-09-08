@@ -26,7 +26,7 @@ return [
         'maintain_aspect_ratio'     => TRUE, // accepts TRUE or FALSE.
         'prevent_upsizing'          => TRUE, // accepts TRUE or FALSE.
         'crop'                      => FALSE, // accepts TRUE or FALSE.
-        'extension'                 => 'png', // accepts jpg, png, gif, bmp, etc.
+        'extension'                 => 'png', // accepts jpg, png, gif, bmp, etc. Taken from the intervention lib.
         'quality'                   => 90 // accepts any integer between 0 and 100.
     ],
 
@@ -62,7 +62,9 @@ return [
     | After one image is uploaded and processed, it can be moved to the cloud.
     | To do so, besides wiring up the events and listeners, you have to
     | specify a cloud disk here. If you do not want to use a cloud disk,
-    | just leave this empty.
+    | just leave this empty. If you don't want to ue a cloud disk but
+    | store everything on your server (not recommended), then leave this
+    | blank or set it to null.
     |
     | You can add more disks in config/filesystems.php
     |
@@ -75,7 +77,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | Same as local disk URL, but for the cloud. This URL will be used
-    | once (and if) the images have been moved to the cloud.
+    | once (and if) the images have been moved to the cloud. If you don't want
+    | to ue a cloud disk but store everything on your server (not recommended),
+    | then leave this blank or set it to null.
     |
     */
     'cloud_disk_url' => '',

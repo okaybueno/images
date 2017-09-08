@@ -182,9 +182,10 @@ class ImageService implements ImageServiceInterface
             $this->removeImageFromDisk( $image, config( 'images.local_disk_name', 'local' ) );
 
             // If it's in the cloud then remove it from the cloud too.
-            if ( $image->processed )
+            $cloudDiskName = config( 'images.cloud_disk_name' );
+            if ( $image->processed && $cloudDiskName )
             {
-                $this->removeImageFromDisk( $image, config( 'images.cloud_disk_name' ) );
+                $this->removeImageFromDisk( $image, $cloudDiskName );
             }
 
             // Destroy the entry.

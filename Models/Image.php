@@ -36,7 +36,7 @@ class Image extends Model
             {
                 foreach( $this->thumbnails as $sizeKey => $path )
                 {
-                    $sizesArray[ $sizeKey ] = $onlyPath ? $path : $this->cdn_url_to( $path );
+                    $sizesArray[ $sizeKey ] = $onlyPath ? $path : $this->url_to( $path );
                 }
             }
 
@@ -48,7 +48,7 @@ class Image extends Model
             {
                 foreach( $this->thumbnails as $sizeKey => $path )
                 {
-                    if( $size == $sizeKey ) return $onlyPath ? $path : $this->cdn_url_to( $path );
+                    if( $size == $sizeKey ) return $onlyPath ? $path : $this->url_to( $path );
                 }
             }
         }
@@ -61,7 +61,7 @@ class Image extends Model
      */
     public function url()
     {
-        return $this->cdn_url_to( $this->path );
+        return $this->url_to( $this->path );
     }
 
     /*******************************************************************************************************************
@@ -81,10 +81,12 @@ class Image extends Model
      * @param $path
      * @return string
      */
-    protected function cdn_url_to( $path )
+    protected function url_to( $path )
     {
-        if ( $this->processed ) $cdnBaseUrl = config('images.cloud_disk_url');
-        else $cdnBaseUrl = config('images.local_disk_url');
+        $localUrl = config('images.local_disk_url');
+        $remoteUrl = config('images.cloud_disk_url');
+        if ( $this->processed ) $cdnBaseUrl = $remoteUrl ? $remoteUrl : $localUrl;
+        else $cdnBaseUrl = $localUrl;
 
         $cdnUrlToImage = rtrim( $cdnBaseUrl, '/') . '/' . trim( $path, '/');
 

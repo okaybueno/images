@@ -271,7 +271,8 @@ protected function createAndSaveProfilePictureForUser( $image, User $user )
                 'small' => '100x100'
             ],
             'path' => sprintf( 'users/%s/%s/%s/', $prefix, $user->uuid, (string)date('dmY') ),
-            'crop' => TRUE
+            'crop' => TRUE,
+            'extension' => 'png'
         ];
 
         $imageResult = $this->imageService->createImage( $image , $options );

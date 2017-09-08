@@ -20,7 +20,7 @@ trait MovesProcessedImageToCloud
     {
         $cloudDiskName = config( 'images.cloud_disk_name', NULL);
 
-        if ( $image->processed && !$image->cloud && $cloudDiskName )
+        if ( $image->processed && $cloudDiskName )
         {
             $localDisk = Storage::disk( config( 'images.local_disk_name', 'local' ) );
             $cloudDisk = Storage::disk( $cloudDiskName );

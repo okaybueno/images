@@ -3,7 +3,7 @@
 namespace OkayBueno\Images\Events;
 
 /**
- * Class Event
+ * Class ImageEvent
  * @package OkayBueno\Images\Events
  */
 abstract class ImageEvent
