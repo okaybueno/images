@@ -372,7 +372,7 @@ That's all! Simply put: the way you configure your events and listeners wil defi
 
 ## Credits
 
-- [okay bueno - A fully transparent digital product studio](http://www.okaybueno.com)
+- [okay bueno - A fully transparent digital products studio](http://www.okaybueno.com)
 - [Jesús Espejo](https://github.com/jespejoh) ([Twitter](https://twitter.com/jespejo89))
 
 ## Bugs & contributing
@@ -382,7 +382,7 @@ That's all! Simply put: the way you configure your events and listeners wil defi
 
 ## To-dos
 
-- Automated tests: Although this package has been heavily tested (even on production), there are no automated tests in place.
+- Automated tests: Although this package is already used on production environments, there are no automated tests in place...
 
 ## License
 
