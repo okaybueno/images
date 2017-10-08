@@ -21,7 +21,5 @@ class RemoveLocalImageSync
     public function handle( ImageEvent $event )
     {
         $this->removeLocalImage( $event->image );
-
-        $this->removeImageFromDatabase( $event->image );
     }
 }
