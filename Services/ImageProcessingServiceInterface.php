@@ -8,6 +8,6 @@ namespace OkayBueno\Images\Services;
  */
 interface ImageProcessingServiceInterface
 {
-    public function createImageFromImageDataOrURL( $imageDataOrURL, $destinationFolder );
+    public function createImageFromImageDataOrURL( $imageDataOrURL, $destinationFolder, array $settings = [] );
     public function resizeOrCropImageToSizes( $sourceLocalImage, $destinationFolder, array $sizes, array $settings = [] );
 }

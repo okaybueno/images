@@ -36,9 +36,10 @@ class ImageProcessingService implements ImageProcessingServiceInterface
      * @param $destinationFolder
      * @return bool|string
      */
-    public function createImageFromImageDataOrURL( $imageDataOrURL, $destinationFolder )
+    public function createImageFromImageDataOrURL( $imageDataOrURL, $destinationFolder, array $settings = [] )
     {
-        $filename = md5( $imageDataOrURL  ) . '.' . $this->availableSettings['extension'];
+        $settings = $this->parseSettings( $settings );
+        $filename = md5( $imageDataOrURL  ) . '.' . $settings['extension'];
         $image = $this->intervention->make( $imageDataOrURL );
 
         $pathToFolderInDisk = get_path_to( $destinationFolder );
