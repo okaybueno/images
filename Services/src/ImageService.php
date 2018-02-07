@@ -62,7 +62,7 @@ class ImageService implements ImageServiceInterface
     {
         $path = @$options['path'];
 
-        $imagePath = $this->imageProcessingService->createImageFromImageDataOrURL( $imageDataOrImageURL, $path );
+        $imagePath = $this->imageProcessingService->createImageFromImageDataOrURL( $imageDataOrImageURL, $path, $options );
 
         if ( $imagePath )
         {
