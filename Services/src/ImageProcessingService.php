@@ -80,6 +80,7 @@ class ImageProcessingService implements ImageProcessingServiceInterface
 
             if ( $image )
             {
+                $image->orientate();
                 $settings = $this->parseSettings( $settings );
 
                 foreach( $sizes as $index => $size )
