@@ -1,3 +1,7 @@
+# IMPORTANT ❗
+**This package has been discontinued so it won't receive any other update. If you're using it please consider migrating to another solution. There are many other great solutions out there (ie. "medialibrary") that this package does not provide any benefit whatsoever anymore.**
+
+--- 
 # Image
 
 A package that provides an easy way to work with images attached to models. 
